@@ -1,0 +1,9 @@
+frontend/
+├─ templates/
+│  ├─ base.html
+│  ├─ consulta1.html
+│  ├─ consulta2.html
+│  ├─ consulta3.html
+│  └─ consulta4.html
+└─ static/
+   └─ (archivos estáticos como CSS, JS, imágenes, etc.)
