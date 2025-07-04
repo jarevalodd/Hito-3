@@ -1,0 +1,37 @@
+from flask import Flask, render_template, request
+import spotify_api  # Suponiendo que tienes un módulo para interactuar con la API de Spotify
+
+app = Flask(__name__)
+
+# Ruta para la consulta 1
+@app.route('/consulta1', methods=['GET', 'POST'])
+def consulta1():
+    if request.method == 'POST':
+        año_inicio = request.form['año_inicio']
+        año_fin = request.form['año_fin']
+        umbral = request.form['umbral']
+        # Llamada a una función que obtiene los resultados de la consulta 1
+        resultados = spotify_api.consulta_1(año_inicio, año_fin, umbral)
+        return render_template('consulta1.html', resultados=resultados)
+    return render_template('consulta1.html')
+
+# Ruta para la consulta 2
+@app.route('/consulta2', methods=['GET'])
+def consulta2():
+    resultados = spotify_api.consulta_2()
+    return render_template('consulta2.html', resultados=resultados)
+
+# Ruta para la consulta 3
+@app.route('/consulta3', methods=['GET'])
+def consulta3():
+    resultado = spotify_api.consulta_3()
+    return render_template('consulta3.html', resultado=resultado)
+
+# Ruta para la consulta 4
+@app.route('/consulta4', methods=['GET'])
+def consulta4():
+    resultados = spotify_api.consulta_4()
+    return render_template('consulta4.html', resultados=resultados)
+
+if __name__ == '__main__':
+    app.run(debug=True)
